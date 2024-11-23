@@ -3,8 +3,7 @@ import dotenv from "dotenv";
 import { logout } from "./shared/utils/auth";
 dotenv.config();
 const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-  timeout: 1000
+  baseURL: process.env.REACT_APP_API_URL
 });
 
 apiClient.interceptors.request.use(
