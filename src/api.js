@@ -4,7 +4,7 @@ import { logout } from "./shared/utils/auth";
 dotenv.config();
 const apiClient = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  timeout: 1000,
+  timeout: 1000
 });
 
 apiClient.interceptors.request.use(
@@ -26,15 +26,12 @@ apiClient.interceptors.request.use(
 // public routes
 
 export const login = async (data) => {
-    console.log('xxxx', process.env.REACT_APP_API_URL)
-
   try {
-    console.log('xxxx', process.env.REACT_APP_API_URL)
     return await apiClient.post("/auth/login", data);
   } catch (exception) {
     return {
       error: true,
-      exception,
+      exception
     };
   }
 };
@@ -45,7 +42,7 @@ export const register = async (data) => {
   } catch (exception) {
     return {
       error: true,
-      exception,
+      exception
     };
   }
 };
@@ -58,7 +55,7 @@ export const sendFriendInvitation = async (data) => {
     checkResponseCode(exception);
     return {
       error: true,
-      exception,
+      exception
     };
   }
 };
@@ -70,7 +67,7 @@ export const acceptFriendInvitation = async (data) => {
     checkResponseCode(exception);
     return {
       error: true,
-      exception,
+      exception
     };
   }
 };
@@ -82,7 +79,7 @@ export const rejectFriendInvitation = async (data) => {
     checkResponseCode(exception);
     return {
       error: true,
-      exception,
+      exception
     };
   }
 };

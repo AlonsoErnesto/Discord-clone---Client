@@ -1,8 +1,9 @@
 import io from "socket.io-client";
+import dotenv from "dotenv";
 import {
   setPendingFriendsInvitations,
   setFriends,
-  setOnlineUsers,
+  setOnlineUsers
 } from "../store/actions/friendsActions";
 import store from "../store/store";
 import { updateDirectChatHistoryIfActive } from "../shared/utils/chat";
@@ -10,14 +11,15 @@ import * as roomHandler from "./roomHandler";
 import * as webRTCHandler from "./webRTCHandler";
 
 let socket = null;
+dotenv.config();
 
 export const connectWithSocketServer = (userDetails) => {
   const jwtToken = userDetails.token;
 
-  socket = io("http://localhost:5002", {
+  socket = io(`${process.env.REACT_APP_API_URL}/api`, {
     auth: {
-      token: jwtToken,
-    },
+      token: jwtToken
+    }
   });
 
   socket.on("connect", () => {
